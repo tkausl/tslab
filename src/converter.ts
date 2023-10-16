@@ -685,6 +685,13 @@ export function createConverter(options?: ConverterOptions): Converter {
           if (keep.type) {
             addName(node, key);
           }
+          return;
+        }
+        if(ts.isModuleDeclaration(node)) {
+          if(keep.value) {
+            addName(node, key);
+          }
+          return;
         }
         // TODO: Support more kinds.
         // console.log(
